@@ -23,6 +23,12 @@ fun main() {
             2->{juego.mostrarTablero()}
             3->{salida=true}
         }
+        if (juego.comprobacionGanador().first){
+            salida=true
+        }
+    }
+    if (juego.comprobacionGanador().first){
+        println("ENHORABUENA HAS GANADOR")
     }
     println("¡GRACIAS POR JUGAR!")
 }

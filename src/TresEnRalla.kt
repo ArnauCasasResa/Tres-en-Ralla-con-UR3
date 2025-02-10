@@ -43,7 +43,36 @@ class TresEnRalla {
         }
         return sePuede
     }
-    fun comprobacionGanador(){
-        //TODO
+    fun comprobacionGanador(): Pair<Boolean, String> {
+        var ganador = false
+        var jugadorGanador = ""
+
+        // Comprobar filas
+        for (fila in tablero) {
+            if (fila[0] != "n" && fila[0] == fila[1] && fila[1] == fila[2]) {
+                ganador = true
+                jugadorGanador = if (fila[0] == "X") "JUGADOR1" else "JUGADOR2"
+            }
+        }
+
+        // Comprobar columnas
+        for (columna in 0..2) {
+            if (tablero[0][columna] != "n" && tablero[0][columna] == tablero[1][columna] && tablero[1][columna] == tablero[2][columna]) {
+                ganador = true
+                jugadorGanador = if (tablero[0][columna] == "X") "JUGADOR1" else "JUGADOR2"
+            }
+        }
+
+        // Comprobar diagonales
+        if (tablero[0][0] != "n" && tablero[0][0] == tablero[1][1] && tablero[1][1] == tablero[2][2]) {
+            ganador = true
+            jugadorGanador = if (tablero[0][0] == "X") "JUGADOR1" else "JUGADOR2"
+        }
+        if (tablero[0][2] != "n" && tablero[0][2] == tablero[1][1] && tablero[1][1] == tablero[2][0]) {
+            ganador = true
+            jugadorGanador = if (tablero[0][2] == "X") "JUGADOR1" else "JUGADOR2"
+        }
+
+        return Pair(ganador, jugadorGanador)
     }
 }
