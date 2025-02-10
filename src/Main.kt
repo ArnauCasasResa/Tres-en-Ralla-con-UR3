@@ -17,15 +17,14 @@ fun main() {
         val optionSelected = scan.nextInt()
         when(optionSelected){
             1->{
-                val fila=scan.nextInt()
-                val columna=scan.nextInt()
-                juego.ponerFicha(columna, fila)
+                val posiciones=seleccionarPosiciones()
+                juego.ponerFicha(posiciones.first,posiciones.second)
             }
             2->{juego.mostrarTablero()}
             3->{salida=true}
         }
     }
-    println("GRACIAS POR JUGAR")
+    println("¡GRACIAS POR JUGAR!")
 }
 
 
@@ -54,3 +53,12 @@ fun main() {
     //Tancar el server
     serverSocket.close()
  */
+
+fun seleccionarPosiciones():Pair<Int,Int>{
+    val scan = Scanner(System.`in`)
+    println("Que fila quieres seleccionar para poner tu ficha?")
+    val fila=scan.nextInt()
+    println("Que columna quieres seleccionar para poner tu ficha?")
+    val columna=scan.nextInt()
+    return Pair(columna-1,fila-1)
+}
