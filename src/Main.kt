@@ -1,5 +1,5 @@
 fun main() {
-    var juego = TresEnRalla()
+    val juego = TresEnRalla()
     juego.mostrarTablero()
 }
 
