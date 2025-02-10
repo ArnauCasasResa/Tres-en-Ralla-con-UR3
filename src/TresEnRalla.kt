@@ -37,9 +37,9 @@ class TresEnRalla {
     }
 
     private fun comprovacionFichaPossible(columna: Int, fila: Int): Boolean {
-        var sePuede = false
+        var sePuede = true
         if (tablero[fila][columna] != "n") {
-            sePuede = true
+            sePuede = false
         }
         return sePuede
     }
