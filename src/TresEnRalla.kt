@@ -1,6 +1,7 @@
 class TresEnRalla{
     var turno="player1"
     var tablero = listOf(listOf("n","n","n"),listOf("n","n","n"),listOf("n","n","n"))
+
     fun cambiarTurno(){
         if (turno=="player1"){
             turno="player2"
@@ -8,6 +9,7 @@ class TresEnRalla{
             turno="player1"
         }
     }
+
     fun mostrarTablero(){
         for(fila in tablero){
             for(casilla in fila){
