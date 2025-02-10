@@ -1,6 +1,31 @@
+import java.util.Scanner
+
 fun main() {
+    //Cosas para el juego
+    val scan = Scanner(System.`in`)
     val juego = TresEnRalla()
-    juego.mostrarTablero()
+    var salida = false
+    val menuOptions= listOf("1.Poner ficha","2.Consultar Tablero","3.Exit")
+
+    while (!salida){
+        println("---------------------------")
+        println("TURNO DEL ${juego.turno}")
+        println("---------------------------")
+        for (i in menuOptions){
+            println(i)
+        }
+        val optionSelected = scan.nextInt()
+        when(optionSelected){
+            1->{
+                val fila=scan.nextInt()
+                val columna=scan.nextInt()
+                juego.ponerFicha(columna, fila)
+            }
+            2->{juego.mostrarTablero()}
+            3->{salida=true}
+        }
+    }
+    println("GRACIAS POR JUGAR")
 }
 
 
