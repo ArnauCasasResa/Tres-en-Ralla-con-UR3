@@ -1,3 +1,5 @@
+import java.io.PrintWriter
+
 class TresEnRalla {
     var turno = "JUGADOR1"
     private var tablero = mutableListOf(
@@ -6,7 +8,7 @@ class TresEnRalla {
         mutableListOf("n", "n", "n")
     )
 
-    private fun cambiarTurno() {
+    fun cambiarTurno() {
         if (turno == "JUGADOR1") {
             turno = "JUGADOR2"
         } else if (turno == "JUGADOR2") {
@@ -23,20 +25,19 @@ class TresEnRalla {
         }
     }
 
-    fun ponerFicha(columna: Int, fila: Int) {
+    fun ponerFicha(columna: Int, fila: Int,conexion: PrintWriter) {
         if (comprovacionFichaPossible(columna, fila)) {
             if (turno == "JUGADOR1") {
                 tablero[fila][columna] = "X"
             } else if (turno == "JUGADOR2") {
                 tablero[fila][columna] = "O"
             }
-            cambiarTurno()
         } else {
             println("En esta casilla no se puede poner una ficha, ya hay una ficha alli!")
         }
     }
 
-    private fun comprovacionFichaPossible(columna: Int, fila: Int): Boolean {
+    fun comprovacionFichaPossible(columna: Int, fila: Int): Boolean {
         var sePuede = true
         if (tablero[fila][columna] != "n") {
             sePuede = false
