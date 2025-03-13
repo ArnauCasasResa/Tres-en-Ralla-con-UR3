@@ -25,13 +25,15 @@ class TresEnRalla {
         }
     }
 
-    fun ponerFicha(columna: Int, fila: Int,conexion: PrintWriter) {
+    fun ponerFicha(columna: Int, fila: Int,conexion: PrintWriter,mensaje:String) {
         if (comprovacionFichaPossible(columna, fila)) {
             if (turno == "JUGADOR1") {
                 tablero[fila][columna] = "X"
+                //conexion.println(mensaje)
             } else if (turno == "JUGADOR2") {
                 tablero[fila][columna] = "O"
             }
+            cambiarTurno()
         } else {
             println("En esta casilla no se puede poner una ficha, ya hay una ficha alli!")
         }
