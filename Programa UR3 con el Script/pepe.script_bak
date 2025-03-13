@@ -1,0 +1,67 @@
+# Función para calcular la posición en el tablero 3x3
+def calcular_posicion(base_pos, cell_num, paso_x, paso_y):
+    fila = floor((cell_num - 1) / 3)  
+    columna = (cell_num - 1) % 3  
+
+    nueva_x = base_pos[0] + (columna * paso_x)
+    nueva_y = base_pos[1] - (fila * paso_y)
+    nueva_z = base_pos[2]
+
+    return p[nueva_x, nueva_y, nueva_z, base_pos[3], base_pos[4], base_pos[5]]
+end
+
+def calcular_posicion_arriba(base_pos, cell_num, paso_x, paso_y):
+    fila = floor((cell_num - 1) / 3)  
+    columna = (cell_num - 1) % 3  
+
+    nueva_x = base_pos[0] + (columna * paso_x)
+    nueva_y = base_pos[1] - (fila * paso_y)
+    nueva_z = base_pos[2] + 0.1
+
+    return p[nueva_x, nueva_y, nueva_z, base_pos[3], base_pos[4], base_pos[5]]
+end
+# Función para obtener el número de un string "num letra"
+def obtener_numero(texto):
+    espacio = str_find(texto, " ") 
+    if espacio < 0:
+        return -1  # Manejo de error si no hay espacio
+    end
+    num_str = str_sub(texto, 0, espacio)  
+    return to_num(num_str)  
+end
+
+# Función para obtener la ficha ("X" o "O") de un string "num letra"
+def obtener_ficha(texto):
+    espacio = str_find(texto, " ") 
+    if espacio < 0:
+        return ""  # Manejo de error si no hay espacio
+    end
+    return str_sub(texto, espacio + 1, str_len(texto)) 
+end
+
+# Función para calcular la posición de una ficha en el tablero 2x5
+def calcular_posicion_ficha(base_pos, cantidad_restante, paso_x, paso_y):
+    # Calcular la columna y la fila
+    columna = floor((10 - cantidad_restante) / 2)  # Cambia cada 2 fichas
+    fila = (cantidad_restante+1) % 2  # Alterna entre 0 y 1
+
+    # Calcular nueva posición
+    nueva_x = base_pos[0] + (columna * paso_x)
+    nueva_y = base_pos[1] - (fila * paso_y)
+    nueva_z = base_pos[2]  
+
+    return p[nueva_x, nueva_y, nueva_z, base_pos[3], base_pos[4], base_pos[5]]
+end
+
+def calcular_posicion_ficha_arriba(base_pos, cantidad_restante, paso_x, paso_y):
+    # Calcular la columna y la fila
+    columna = floor((10 - cantidad_restante) / 2)  # Cambia cada 2 fichas
+    fila = (cantidad_restante +1) % 2  # Alterna entre 0 y 1
+
+    # Calcular nueva posición
+    nueva_x = base_pos[0] + (columna * paso_x)
+    nueva_y = base_pos[1] - (fila * paso_y)
+    nueva_z = base_pos[2] +0.1 
+
+    return p[nueva_x, nueva_y, nueva_z, base_pos[3], base_pos[4], base_pos[5]]
+end

@@ -1,0 +1,30 @@
+ Program
+   Variables Setup
+   BeforeStart
+     Script: pepe.script_bak
+     restantes≔10
+     paso_tablero≔0.07
+     paso_x_fichas≔0.052
+     paso_y_fichas≔0.07
+     posi_tablero≔p[0.250183,-0.0555376,0.00556842,-2.307,2.12022,-0.0152373]
+     posi_fichas≔p[0.218027,0.168794,0.00429337,2.24033,-2.20236,1.95739e-05]
+     socket≔socket_open("172.30.3.77", 5858, "s1")
+   Robot Program
+     Loop socket≟ False 
+       socket≔socket_open("172/30.3.77", 5858, "s1")
+     input≔socket_read_string("s1",timeout=2)
+     MoveJ
+       Waypoint_1
+     2FG Release (71.0)
+     Loop input≟""
+       input≔socket_read_string("s1",timeout=2)
+       Wait: 1.0
+     movel(calcular_posicion_ficha_arriba(posi_fichas,restantes,paso_x_fichas,paso_y_fichas),1.2,0.25,0,0)
+     movel(calcular_posicion_ficha(posi_fichas,restantes,paso_x_fichas,paso_y_fichas),1.2,0.25,0,0)
+     2FG Grip (33)
+     movel(calcular_posicion_ficha_arriba(posi_fichas,restantes,paso_x_fichas,paso_y_fichas),1.2,0.25,0,0)
+     restantes≔restantes-1
+     movel(calcular_posicion_arriba(posi_tablero,obtener_numero(input),paso_tablero,paso_tablero),1.2,0.25,0,0)
+     movel(calcular_posicion(posi_tablero,obtener_numero(input),paso_tablero,paso_tablero),1.2,0.25,0,0)
+     2FG Release (70)
+     movel(calcular_posicion_arriba(posi_tablero,obtener_numero(input),paso_tablero,paso_tablero),1.2,0.25,0,0)
