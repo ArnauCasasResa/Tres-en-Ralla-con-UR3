@@ -25,7 +25,7 @@ class TresEnRalla {
         }
     }
 
-    fun ponerFicha(columna: Int, fila: Int,conexion: PrintWriter,mensaje:String) {
+    fun ponerFicha(columna: Int, fila: Int) {
         if (comprovacionFichaPossible(columna, fila)) {
             if (turno == "JUGADOR1") {
                 tablero[fila][columna] = "X"
